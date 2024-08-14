@@ -3,10 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart'; // Import flutter_bloc package
 import 'package:third_day_camp/Bloc/counter_bloc.dart';
 import 'package:third_day_camp/widgets/splash.dart'; // Your existing imports
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Ensure Flutter is initialized
   runApp(
     BlocProvider(
-      create: (context) => CounterBloc(), // Provide your BLoC
+      create: (context) => CounterBloc(),
       child: const MyApp(),
     ),
   );

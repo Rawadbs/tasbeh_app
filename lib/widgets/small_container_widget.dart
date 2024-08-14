@@ -27,8 +27,9 @@ class SmallContainer extends StatelessWidget {
         child: Stack(
           children: [
             // إضافة الصورة من الأصول
-            Transform.translate(
-              offset: const Offset(110, 0),
+            Positioned(
+              right: 5,
+              top: 5,
               child: Image.asset(
                 imageAssetPath,
                 width: 60,

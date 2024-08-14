@@ -66,9 +66,9 @@ class EveningAthkar extends StatelessWidget {
                             Text(
                               'عدد المرات: ${zekr.repeat}',
                               style: const TextStyle(
-                                fontSize: 18,
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.teal,
+                                color: Color.fromARGB(255, 116, 72, 187),
                                 fontFamily: 'TheYear',
                               ),
                             ),

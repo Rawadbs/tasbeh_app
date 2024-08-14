@@ -3,7 +3,7 @@ import 'package:third_day_camp/screens/after_prayer_athkar.dart';
 import 'package:third_day_camp/screens/evening_athkar.dart';
 import 'package:third_day_camp/screens/morning_athkar.dart';
 import 'package:third_day_camp/screens/sleep_athkar.dart';
-import 'package:third_day_camp/screens/subha.dart';
+import 'package:third_day_camp/screens/tasbeh.dart';
 import 'package:third_day_camp/widgets/big_container_widget.dart';
 import 'package:third_day_camp/widgets/small_container_widget.dart';
 
@@ -12,6 +12,13 @@ class HomePageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    // Adjust childAspectRatio based on screen width
+    double childAspectRatio = screenWidth > 600
+        ? 1.2
+        : 0.99; // Larger screens get smaller aspect ratio
+
     List<String> texts = [
       'اذكار الصباح',
       'اذكار المساء',
@@ -46,7 +53,7 @@ class HomePageScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: const Color(0xffF3EEFF),
-        title: const Text(
+        title: Text(
           'ذكرنا',
           style: TextStyle(
             fontSize: 45,
@@ -55,47 +62,51 @@ class HomePageScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Column(
-        children: [
-          ContainerAthkar(
-            athkar: 'السبحة',
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const SubhaScreen(),
-                ),
-              );
-            },
-          ),
-          Expanded(
-            child: GridView.builder(
-              padding: const EdgeInsets.all(15),
-              itemCount: 4,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, // عدد الأعمدة في الشبكة
-                crossAxisSpacing: 20, // تقليل المسافة بين الأعمدة
-                mainAxisSpacing: 30, // تقليل المسافة بين الصفوف
-                childAspectRatio: 0.99,
-              ),
-              itemBuilder: (context, index) {
-                return SmallContainer(
-                  text: texts[index],
-                  color1: colors[index],
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            pages[index], // Navigate to the corresponding page
-                      ),
-                    );
-                  },
-                  imageAssetPath: imagePaths[index], // تمرير مسار الصورة
+      body: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: ContainerAthkar(
+              athkar: 'السبحة',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const TaasbehScreen(),
+                  ),
                 );
               },
             ),
-          )
+          ),
+          SliverPadding(
+            padding: EdgeInsets.all(screenWidth * 0.06),
+            sliver: SliverGrid(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) {
+                  return SmallContainer(
+                    text: texts[index],
+                    color1: colors[index],
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => pages[index],
+                        ),
+                      );
+                    },
+                    imageAssetPath: imagePaths[index],
+                  );
+                },
+                childCount: texts.length,
+              ),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 20,
+                mainAxisSpacing: 30,
+                childAspectRatio:
+                    childAspectRatio, // Adjusted based on screen width
+              ),
+            ),
+          ),
         ],
       ),
     );
