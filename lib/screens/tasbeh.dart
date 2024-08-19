@@ -58,8 +58,10 @@ class TaasbehScreen extends StatelessWidget {
               Transform.translate(
                 offset: Offset(0, -285),
                 child: Container(
+                  width: 180, // زيادة العرض لضمان عرض الأرقام الأكبر
+                  height: 80, // ارتفاع ثابت
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 80, vertical: 5),
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(14),
                     border: Border.all(
@@ -68,18 +70,21 @@ class TaasbehScreen extends StatelessWidget {
                     ),
                     color: Color(0xffd9d9d9),
                   ),
-                  child: BlocBuilder<CounterBloc, CounterState>(
-                    builder: (context, state) {
-                      final count = state is CounterUpdated ? state.count : 0;
-                      return Text(
-                        count.toString(),
-                        style: const TextStyle(
-                          fontSize: 45,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0XFF3C2560),
-                        ),
-                      );
-                    },
+                  child: Center(
+                    child: BlocBuilder<CounterBloc, CounterState>(
+                      builder: (context, state) {
+                        final count = state is CounterUpdated ? state.count : 0;
+                        return Text(
+                          count.toString(),
+                          style: const TextStyle(
+                            fontSize:
+                                40, // تقليل حجم الخط قليلاً لعرض الأرقام الكبيرة
+                            fontWeight: FontWeight.bold,
+                            color: Color(0XFF3C2560),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),

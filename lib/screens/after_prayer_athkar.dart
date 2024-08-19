@@ -12,12 +12,17 @@ class AfterPrayerAthkar extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: const Color(0xffF3EEFF),
         centerTitle: true,
-        title: const Text(
-          'اذكار بعد الصلاة',
-          style: TextStyle(
-            fontSize: 45,
-            color: Color(0XFF3C2560),
-            fontFamily: 'TheYear',
+        title: MediaQuery(
+          data: MediaQuery.of(context).copyWith(
+            textScaler: TextScaler.linear(0.85), // تعطيل تكبير النصوص
+          ),
+          child: const Text(
+            'اذكار بعد الصلاة',
+            style: TextStyle(
+              fontSize: 45,
+              color: Color(0XFF3C2560),
+              fontFamily: 'TheYear',
+            ),
           ),
         ),
       ),

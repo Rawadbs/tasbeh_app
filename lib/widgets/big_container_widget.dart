@@ -25,7 +25,7 @@ class ContainerAthkar extends StatelessWidget {
           width: containerWidth,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(23),
-            color: const Color(0xFFB299E6),
+            color: const Color(0xFFA78EDA),
           ),
           child: Stack(
             children: [

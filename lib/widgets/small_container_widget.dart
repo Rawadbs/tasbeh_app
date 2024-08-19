@@ -32,17 +32,20 @@ class SmallContainer extends StatelessWidget {
               top: 5,
               child: Image.asset(
                 imageAssetPath,
-                width: 60,
+                width: 55,
               ),
             ),
-            Center(
-              child: Text(
-                text,
-                style: const TextStyle(
-                  color: Color(0XFF3C2560),
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'TheYear',
+            Padding(
+              padding: const EdgeInsets.only(top: 25),
+              child: Center(
+                child: Text(
+                  text,
+                  style: const TextStyle(
+                    color: Color(0XFF3C2560),
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'TheYear',
+                  ),
                 ),
               ),
             ),

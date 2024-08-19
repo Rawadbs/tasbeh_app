@@ -12,9 +12,7 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
       // Ensure that we are dealing with CounterUpdated state
       if (state is CounterUpdated) {
         var count = (state as CounterUpdated).count + 1;
-        if (count > 99) {
-          count = 0; // Reset count if it exceeds 99
-        }
+
         await _saveCounter(count);
         emit(CounterUpdated(count));
       }

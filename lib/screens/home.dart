@@ -3,6 +3,7 @@ import 'package:third_day_camp/screens/after_prayer_athkar.dart';
 import 'package:third_day_camp/screens/evening_athkar.dart';
 import 'package:third_day_camp/screens/morning_athkar.dart';
 import 'package:third_day_camp/screens/sleep_athkar.dart';
+import 'package:third_day_camp/screens/surah_quran.dart';
 import 'package:third_day_camp/screens/tasbeh.dart';
 import 'package:third_day_camp/widgets/big_container_widget.dart';
 import 'package:third_day_camp/widgets/small_container_widget.dart';
@@ -23,9 +24,11 @@ class HomePageScreen extends StatelessWidget {
       'اذكار الصباح',
       'اذكار المساء',
       'اذكار النوم',
-      'اذكار بعد الصلاة'
+      'اذكار بعد الصلاة',
+      'القران الكريم',
     ];
     List<Color> colors = [
+      const Color(0xFFB299E6),
       const Color(0xffC6B4EF),
       const Color(0xffD6C8F6),
       const Color(0xffE2D8FB),
@@ -38,6 +41,7 @@ class HomePageScreen extends StatelessWidget {
       const EveningAthkar(),
       const SleepAthkarPage(),
       const AfterPrayerAthkar(),
+      SurahPage(),
     ];
 
     // Define image paths
@@ -46,6 +50,7 @@ class HomePageScreen extends StatelessWidget {
       'assets/evening.png',
       'assets/moon.png',
       'assets/pray.png',
+      'assets/quran.png',
     ];
 
     return Scaffold(
@@ -78,7 +83,7 @@ class HomePageScreen extends StatelessWidget {
             ),
           ),
           SliverPadding(
-            padding: EdgeInsets.all(screenWidth * 0.06),
+            padding: EdgeInsets.all(screenWidth * 0.055),
             sliver: SliverGrid(
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
