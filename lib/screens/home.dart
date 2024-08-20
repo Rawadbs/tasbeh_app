@@ -3,10 +3,7 @@ import 'package:third_day_camp/screens/after_prayer_athkar.dart';
 import 'package:third_day_camp/screens/evening_athkar.dart';
 import 'package:third_day_camp/screens/morning_athkar.dart';
 import 'package:third_day_camp/screens/sleep_athkar.dart';
-import 'package:third_day_camp/screens/surah_quran.dart';
-import 'package:third_day_camp/screens/tasbeh.dart';
 import 'package:third_day_camp/widgets/big_container_widget.dart';
-import 'package:third_day_camp/widgets/small_container_widget.dart';
 
 class HomePageScreen extends StatelessWidget {
   const HomePageScreen({super.key});
@@ -15,24 +12,24 @@ class HomePageScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
 
-    // Adjust childAspectRatio based on screen width
-    double childAspectRatio = screenWidth > 600
-        ? 1.2
-        : 0.99; // Larger screens get smaller aspect ratio
-
     List<String> texts = [
       'اذكار الصباح',
       'اذكار المساء',
       'اذكار النوم',
       'اذكار بعد الصلاة',
-      'القران الكريم',
     ];
     List<Color> colors = [
       const Color(0xFFB299E6),
       const Color(0xffC6B4EF),
       const Color(0xffD6C8F6),
       const Color(0xffE2D8FB),
-      const Color(0xffEBE4FE),
+    ];
+
+    List<String> imagePaths = [
+      'assets/sun.png',
+      'assets/evening.png',
+      'assets/moon.png',
+      'assets/pray.png',
     ];
 
     // Define navigation for each index
@@ -41,16 +38,6 @@ class HomePageScreen extends StatelessWidget {
       const EveningAthkar(),
       const SleepAthkarPage(),
       const AfterPrayerAthkar(),
-      SurahPage(),
-    ];
-
-    // Define image paths
-    List<String> imagePaths = [
-      'assets/sun.png',
-      'assets/evening.png',
-      'assets/moon.png',
-      'assets/pray.png',
-      'assets/quran.png',
     ];
 
     return Scaffold(
@@ -69,26 +56,13 @@ class HomePageScreen extends StatelessWidget {
       ),
       body: CustomScrollView(
         slivers: [
-          SliverToBoxAdapter(
-            child: ContainerAthkar(
-              athkar: 'السبحة',
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const TaasbehScreen(),
-                  ),
-                );
-              },
-            ),
-          ),
           SliverPadding(
             padding: EdgeInsets.all(screenWidth * 0.055),
-            sliver: SliverGrid(
+            sliver: SliverList(
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
-                  return SmallContainer(
-                    text: texts[index],
+                  return ContainerAthkar(
+                    athkar: texts[index],
                     color1: colors[index],
                     onTap: () {
                       Navigator.push(
@@ -98,17 +72,10 @@ class HomePageScreen extends StatelessWidget {
                         ),
                       );
                     },
-                    imageAssetPath: imagePaths[index],
+                    imageAssetPath: imagePaths[index], // مسار الصورة
                   );
                 },
                 childCount: texts.length,
-              ),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 30,
-                childAspectRatio:
-                    childAspectRatio, // Adjusted based on screen width
               ),
             ),
           ),

@@ -41,21 +41,19 @@ class QuranPage extends StatelessWidget {
                 itemCount: ayat.length,
                 itemBuilder: (context, index) {
                   return Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    child: Card(
-                      elevation: 2,
-                      child: ListTile(
-                        contentPadding: const EdgeInsets.all(16),
-                        title: Text(
-                          ayat[index].ayaTextEmlaey,
-                          textAlign: TextAlign.right,
-                          style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0XFF3C2560),
-                            fontFamily: 'QuranUthmani',
-                          ),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                    ),
+                    child: ListTile(
+                      contentPadding: const EdgeInsets.all(4),
+                      title: Text(
+                        ayat[index].ayaTextEmlaey,
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0XFF3C2560),
+                          fontFamily: 'QuranUthmani',
                         ),
                       ),
                     ),

@@ -39,7 +39,6 @@ class SleepAthkarPage extends StatelessWidget {
                 final zekr = athkar.array[index];
                 return Card(
                   margin: const EdgeInsets.symmetric(vertical: 8),
-                  elevation: 5,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),

@@ -45,14 +45,11 @@ class TaasbehScreen extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        physics: NeverScrollableScrollPhysics(), // Disable scrolling
-
         child: Center(
           child: Column(
             children: [
-              SizedBox(height: 150),
+              SizedBox(height: 170),
               CustomPaint(
-                size: Size(262, 329),
                 painter: RPPSCustomPainter(),
               ),
               Transform.translate(
