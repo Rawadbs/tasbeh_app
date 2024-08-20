@@ -45,20 +45,21 @@ class TaasbehScreen extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
+        physics: NeverScrollableScrollPhysics(), // Disable scrolling
+
         child: Center(
           child: Column(
             children: [
-              SizedBox(height: 170),
+              SizedBox(height: 150),
               CustomPaint(
+                size: Size(262, 329),
                 painter: RPPSCustomPainter(),
               ),
               Transform.translate(
                 offset: Offset(0, -285),
                 child: Container(
                   width: 180, // زيادة العرض لضمان عرض الأرقام الأكبر
-                  height: 80, // ارتفاع ثابت
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                  height: 80,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(14),
                     border: Border.all(
@@ -67,21 +68,20 @@ class TaasbehScreen extends StatelessWidget {
                     ),
                     color: Color(0xffd9d9d9),
                   ),
-                  child: Center(
-                    child: BlocBuilder<CounterBloc, CounterState>(
-                      builder: (context, state) {
-                        final count = state is CounterUpdated ? state.count : 0;
-                        return Text(
+                  child: BlocBuilder<CounterBloc, CounterState>(
+                    builder: (context, state) {
+                      final count = state is CounterUpdated ? state.count : 0;
+                      return Center(
+                        child: Text(
                           count.toString(),
                           style: const TextStyle(
-                            fontSize:
-                                40, // تقليل حجم الخط قليلاً لعرض الأرقام الكبيرة
+                            fontSize: 45,
                             fontWeight: FontWeight.bold,
                             color: Color(0XFF3C2560),
                           ),
-                        );
-                      },
-                    ),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ),
