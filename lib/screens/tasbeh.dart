@@ -45,8 +45,6 @@ class TaasbehScreen extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        physics: NeverScrollableScrollPhysics(), // Disable scrolling
-
         child: Center(
           child: Column(
             children: [
