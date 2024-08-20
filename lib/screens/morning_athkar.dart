@@ -49,7 +49,8 @@ class MorningAthkar extends StatelessWidget {
                     contentPadding: const EdgeInsets.all(16),
                     title: Text(
                       zekr.zekr,
-                      textAlign: TextAlign.end,
+                      textAlign: TextAlign.right,
+                      textDirection: TextDirection.rtl,
                       style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,

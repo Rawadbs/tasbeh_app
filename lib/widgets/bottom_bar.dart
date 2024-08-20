@@ -12,8 +12,8 @@ class _BottomBarState extends State<BottomBar> {
   int _selectedIndex = 2;
 
   final List<Widget> _pages = [
-    TaasbehScreen(),
     SurahPage(),
+    TaasbehScreen(),
     HomePageScreen(),
   ];
 
@@ -32,19 +32,19 @@ class _BottomBarState extends State<BottomBar> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Image.asset(
-              'assets/subha.png',
-              width: 24,
-              height: 24,
-            ),
-            label: 'السبحة',
-          ),
-          BottomNavigationBarItem(
-            icon: Image.asset(
               'assets/quran.png',
               width: 24,
               height: 24,
             ),
             label: 'القرآن',
+          ),
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              'assets/subha.png',
+              width: 24,
+              height: 24,
+            ),
+            label: 'السبحة',
           ),
           BottomNavigationBarItem(
             icon: Image.asset(
